@@ -2,7 +2,7 @@ function getMzCools($,callback){
     return {
         name: "",
         dom: "",
-        text: "",   //可以点击文字秒速
+        text: "",   //文字描述
         cd: 10, //冷却时间
         cd_text: "%d",  //冷却时文字描述 %d剩余事件
         cd_func: function(object,cd){},
