@@ -27,7 +27,7 @@ function getMzCools($,callback){
                 this.cd_func($(this.dom),end_timestamp)
             }
             setTimeout(function(){
-                cools.run()
+                cools.cron()
             },1000)
         },
         bind: function(){
