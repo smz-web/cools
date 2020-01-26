@@ -19,9 +19,10 @@
         countdown.dom = ".send-mail"
         countdown.text = "邮箱验证"
         countdown.cd_text = "%d秒后再试"
-        // countdown.cd_func = function(object,cd){ //点击后进入冷却触发
-            
-        // }
+		countdown.where = function(){
+			alert("邮箱格式不正确");
+			return false
+		}
         countdown.run()
 	</script>
 </html>

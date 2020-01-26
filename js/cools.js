@@ -5,7 +5,8 @@ function getMzCools($,callback){
         text: "",   //文字描述
         cd: 10, //冷却时间
         cd_text: "%d",  //冷却时文字描述 %d剩余事件
-        cd_func: function(object,cd){},
+        cd_func: function(object,cd){}, //冷却触发方法
+        where: function(){},    //点击条件
         display: false,
         callback: callback ,
         run: function(){
@@ -32,7 +33,8 @@ function getMzCools($,callback){
         bind: function(){
             cools = this
             $(this.dom).click(function(){
-                if(cools.display){
+                where = cools.where()
+                if(cools.display && where){
                     setCookie(cools.name,getTimestamp())
                     cools.callback()
                 }
