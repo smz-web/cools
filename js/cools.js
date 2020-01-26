@@ -1,4 +1,4 @@
-function getMzCools($,callback){
+function getMzCools($){
     return {
         name: "",
         dom: "",
@@ -6,9 +6,9 @@ function getMzCools($,callback){
         cd: 10, //冷却时间
         cd_text: "%d",  //冷却时文字描述 %d剩余事件
         cd_func: function(object,cd){}, //冷却触发方法
-        where: function(){},    //点击条件
-        display: false,
-        callback: callback ,
+        befores: function(){},
+        afters: function(){} ,
+        disabled: false,
         run: function(){
             this.bind()
             this.cron()
@@ -19,7 +19,7 @@ function getMzCools($,callback){
             if(mail_timestamp == false){ mail_timestamp = 0 }
             var timestamp = getTimestamp() - this.cd;
             var end_timestamp =  mail_timestamp - timestamp;
-            if(this.display = (end_timestamp <= 0)){
+            if(this.disabled = (end_timestamp <= 0)){
                 $(this.dom).text(this.text);
             }else{
                 cd_text = this.cd_text.replace("%d",end_timestamp)
@@ -33,10 +33,12 @@ function getMzCools($,callback){
         bind: function(){
             cools = this
             $(this.dom).click(function(){
-                where = cools.where()
-                if(cools.display && where){
+                if(!cools.disabled){
+                    return
+                }
+                if(cools.befores()){
                     setCookie(cools.name,getTimestamp())
-                    cools.callback()
+                    cools.afters()
                 }
             });
         }

@@ -12,16 +12,19 @@
 	<script src="./js/base.js"></script>
 	<script src="./js/cools.js"></script>
 	<script>
-        countdown = getMzCools($,function(){
-            console.log("ok")
-        })
+        countdown = getMzCools($)
         countdown.name = "mail_lasttime"
         countdown.dom = ".send-mail"
         countdown.text = "邮箱验证"
         countdown.cd_text = "%d秒后再试"
-		countdown.where = function(){
-			alert("邮箱格式不正确");
-			return false
+		countdown.befores = function(){
+			email = $("#email").val();
+			if(!isEmail(email)){
+				alert("邮箱格式不正确");
+				return false;
+			}
+			console.log("ok")
+		   return true
 		}
         countdown.run()
 	</script>
