@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>验证码</title>
+	</head>
+	<body>
+		<h2>请在web环境下查看，直接打开cookie无法生效:</h2>
+		<div class="send-mail" style="border:1px solid #333; width:100px; text-align:center;"></div>
+	</body>
+	<script src="./js/jq.js"></script>
+	<script src="./js/base.js"></script>
+	<script src="./js/cools.js"></script>
+	<script>
+        countdown = getMzCools($,function(){
+            console.log("ok")
+        })
+        countdown.name = "mail_lasttime"
+        countdown.dom = ".send-mail"
+        countdown.text = "邮箱验证"
+        countdown.cd_text = "%d秒后再试"
+        // countdown.cd_func = function(object,cd){ //点击后进入冷却触发
+            
+        // }
+        countdown.run()
+	</script>
+</html>
